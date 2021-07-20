@@ -6,8 +6,12 @@ class Router
   public $method;
   public $param;
 
+
   public function __construct()
   {
+    $this->executionFlow = new executionFlow;
+    $this->executionFlow->showName('Router');
+
     $this->setUri();
     $this->setController();
     $this->setMethod();
@@ -21,7 +25,11 @@ class Router
 
   public function setController()
   {
-    $this->controller = $this->uri[2] === '' ? 'Home' : $this->uri[2];
+    require_once CONTROLLERS . '/LoginController.php';
+    $this->controller = new LoginController;
+    // $this->controller = $this->uri[2] === '' ? 'Home' : $this->uri[2];
+    // require_once $this->controller . 'Controller.php';
+    // $this->controllerInstance = new $this->controller . 'Controller';
   }
 
   public function setMethod()
