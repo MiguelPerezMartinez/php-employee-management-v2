@@ -1,4 +1,4 @@
-$BASE_URL = "http://localhost/php-employee-management-v1";
+$BASE_URL = "../";
 function switchRegisterForm() {
   let newUserText = document.getElementById("new__user--text");
 
