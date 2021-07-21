@@ -25,8 +25,8 @@ class Router
 
   public function setController()
   {
-    require_once CONTROLLERS . '/LoginController.php';
-    $this->controller = new LoginController;
+    require_once CONTROLLERS . '/EmployeeController.php';
+    $this->controller = new EmployeeController;
     // $this->controller = $this->uri[2] === '' ? 'Home' : $this->uri[2];
     // require_once $this->controller . 'Controller.php';
     // $this->controllerInstance = new $this->controller . 'Controller';

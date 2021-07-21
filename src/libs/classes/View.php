@@ -6,7 +6,7 @@ class View
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('View');
 
-    require VIEWS . '/' . 'Login/index.php';
+    require VIEWS . '/' . 'Employee/dashboard.php';
   }
 
   // public function render()
