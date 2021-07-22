@@ -39,13 +39,13 @@ CREATE TABLE employees(
 );
 
 INSERT INTO employees(id,`name`,lastName,email,gender,city,streetAddress,`state`,age,postalCode,phoneNumber) VALUES (1,'Rack','Lei','jackon@network.com','man','San Jone','126','CA',24,394221,7383627627),
-(id,`name`,lastName,email,gender,city,streetAddress,`state`,age,postalCode,phoneNumber) VALUES (2,'John','Doe','jhondoe@foo.com','man','New York','89','WA',34,09889,1283645645),
-(id,`name`,lastName,email,gender,city,streetAddress,`state`,age,postalCode,phoneNumber) VALUES (3,'Leila','Mills','mills@leila.com','woman','San Diego','55','CA',29,098765,9983632461),
-(id,`name`,lastName,email,gender,city,streetAddress,`state`,age,postalCode,phoneNumber) VALUES (4,'Richard','Desmond','dismond@foo.com','man','Salt lake city','90','UT',30,457320,90876987654),
-(id,`name`,lastName,email,gender,city,streetAddress,`state`,age,postalCode,phoneNumber) VALUES (5,'Susan','Smith','susanmith@baz.com','woman','Louisville','43','KNT',28,445321,224355488976),
-(id,`name`,lastName,email,gender,city,streetAddress,`state`,age,postalCode,phoneNumber) VALUES (6,'Brad','Simpson','brad@foo.com','man','Atlanta','128','GEO',40,394221,6854634522),
-(id,`name`,lastName,email,gender,city,streetAddress,`state`,age,postalCode,phoneNumber) VALUES (7,'Neil','Walker','walkerneil@baz.com','man','Nashville','1','TN',42,90143,45372788192),
-(id,`name`,lastName,email,gender,city,streetAddress,`state`,age,postalCode,phoneNumber) VALUES (8,'Robert','Thomson','jackon@network.com','man','New Orleans','126','LU',24,63281,91232876454);
+(2,'John','Doe','jhondoe@foo.com','man','New York','89','WA',34,09889,1283645645),
+(3,'Leila','Mills','mills@leila.com','woman','San Diego','55','CA',29,098765,9983632461),
+(4,'Richard','Desmond','dismond@foo.com','man','Salt lake city','90','UT',30,457320,90876987654),
+(5,'Susan','Smith','susanmith@baz.com','woman','Louisville','43','KNT',28,445321,224355488976),
+(6,'Brad','Simpson','brad@foo.com','man','Atlanta','128','GEO',40,394221,6854634522),
+(7,'Neil','Walker','walkerneil@baz.com','man','Nashville','1','TN',42,90143,45372788192),
+(8,'Robert','Thomson','jackon@network.com','man','New Orleans','126','LU',24,63281,91232876454);
 
 
 CREATE TABLE images_mock(
