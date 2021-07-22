@@ -22,9 +22,8 @@ class EmployeeController extends Controller
     print_r(json_encode($employees));
   }
 
-  public function deleteEmployee() {
-    echo "hello";
+  public function deleteEmployee($id) {
     $this->model = new EmployeeModel;
-    $this->model->remove();
+    $this->model->remove($id);
   }
 }

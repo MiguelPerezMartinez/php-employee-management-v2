@@ -109,11 +109,10 @@ function loadEmployeesList() {
           });
         },
         deleteItem: function (item) {
-          console.log("Hello, it's me");
           return $.ajax({
             type: "DELETE",
-            url: `${base}/employees/deleteEmployee`,
             data: item,
+            url: `${base}employee/deleteEmployee/${item["id"]}`,
           });
         },
       },
