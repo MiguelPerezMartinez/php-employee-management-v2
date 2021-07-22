@@ -1,17 +1,27 @@
 <?php
-class LoginModel
+class LoginModel extends Model
 {
   public function __construct()
   {
-    //TODO: check if Jordi already creates the database class otherwise create it.
-    //$database = new Database;
+    parent::__construct();
   }
+
   public function login($username, $password)
   {
-    //$result = select user from database (check for username/email)
-    //if $result, set $user and check password, if is ok
-    //set $_SESSION variables and return true
-    echo $username . " " . $password;
-    return true;
+    $stmt = $this->db->petition()->prepare("SELECT * FROM users WHERE name='$username'");
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $stmt->execute();
+
+    $result = $stmt->fetch();
+
+    if ($result) {
+      if (password_verify($password, $result['password'])) {
+        $_SESSION['userId'] = $result['userId'];
+        $_SESSION['time'] = time();
+        $_SESSION['lifeTime'] = 60 * 10;
+        return true;
+      }
+    }
+    return false;
   }
 }

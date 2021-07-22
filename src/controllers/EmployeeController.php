@@ -10,15 +10,17 @@ class EmployeeController extends Controller
     $this->executionFlow->showName('Employee controller');
   }
 
-  public function dashboard() {
+  public function dashboard()
+  {
     $view = "Employee/dashboard";
     $this->view->render($view);
   }
 
-  public function allEmployees() {
+  public function allEmployees()
+  {
     $this->model = new EmployeeModel;
     $employees = $this->model->fetchEmployees();
-    
+
 
     print_r(json_encode($employees));
   }
