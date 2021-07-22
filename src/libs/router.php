@@ -9,7 +9,6 @@ class Router
 
   public function __construct()
   {
-    session_start();
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('Router');
 

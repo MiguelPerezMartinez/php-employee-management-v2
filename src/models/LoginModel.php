@@ -19,9 +19,9 @@ class LoginModel extends Model
         $_SESSION['userId'] = $result['userId'];
         $_SESSION['time'] = time();
         $_SESSION['lifeTime'] = 60 * 10;
-        return true;
+        // return true;
       }
     }
-    return false;
+    // return false;
   }
 }
