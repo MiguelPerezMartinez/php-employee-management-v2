@@ -6,11 +6,15 @@ class View
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('View');
 
-    require VIEWS . '/' . 'Login/index.php';
+    //Temporal
+    // $name = 'login/index';
+    // $this->render($name);
+    //
   }
 
-  // public function render()
-  // {
-  //   require VIEWS . '/' . 'Login';
-  // }
+  public function render($name)
+  {
+    echo "render view $name";
+    require VIEWS . "/$name.php";
+  }
 }
