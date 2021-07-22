@@ -3,6 +3,8 @@ class executionFlow
 {
   public function showName($name)
   {
-    echo $name . '</br>';
+    $control = false;
+
+    $control ? print_r($name . '</br>') : "";
   }
 }

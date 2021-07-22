@@ -7,12 +7,14 @@
     main__header
     pt-2
     pb-2
+    base
   "
+  data-url="<?= BASE_URL ?>"
 >
   <div class="logo__wrapper">
     <div class="logo__app">
       <img
-        src="./assets/images/Blue Cool and Funky Gaming Logo.gif"
+        src="<?= BASE_URL ?>assets/images/Blue Cool and Funky Gaming Logo.gif"
         alt="Logo malo"
       />
     </div>

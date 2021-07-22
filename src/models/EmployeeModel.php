@@ -10,7 +10,7 @@ class EmployeeModel extends Model {
         parent::__construct();
     }
     
-    public function getAllEmployees() {
+    public function fetchEmployees() {
     
         $stmt = $this->db->petition()->prepare("SELECT * FROM employees");
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -21,6 +21,6 @@ class EmployeeModel extends Model {
             array_push($result, $row);
         }
     
-        print_r($result);
+        return $result;
     }
 }

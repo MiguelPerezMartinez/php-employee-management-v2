@@ -1,4 +1,5 @@
-$BASE_URL = ".";
+const base = $(".base").data("url");
+
 function switchRegisterForm() {
   let newUserText = document.getElementById("new__user--text");
 
@@ -86,8 +87,7 @@ function createNewEmployee() {
 }
 
 function loadEmployeesList() {
-  $.getJSON("temp/employees.json", function (data) {
-    console.log(data);
+  $.getJSON(`${base}employee/allEmployees`, function (data) {
     $("#employeesList").jsGrid({
       height: "85vh",
       width: "100%",
@@ -104,13 +104,14 @@ function loadEmployeesList() {
         loadData: function () {
           return $.ajax({
             type: "GET",
-            url: `${$BASE_URL}/src/library/employeeController.php?getAllEmployees`,
+            url: `${base}employee/allEmployees`,
+            dataType: "json",
           });
         },
         deleteItem: function (item) {
           return $.ajax({
             type: "DELETE",
-            url: `${$BASE_URL}/src/library/employeeController.php`,
+            url: `${$BASE_URL}/src/library/employeeController/allEmployees`,
             data: item,
           });
         },

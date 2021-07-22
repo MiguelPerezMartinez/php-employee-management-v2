@@ -20,7 +20,7 @@
 
 <body class="d-flex min-vh-100 flex-column justify-content-between align-item-between d-inline-block m-0 p-0 body_bg">
 
-  <header class="bg-light m-0">
+  <header class="bg-light m-0 base" data-url="<?= BASE_URL ?>" >
     <div class="d-flex flex-row justify-content-center align-items-center pt-2 pb-2  border-bottom">
       <h3 class="text-dark">
         Employee Management
