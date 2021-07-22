@@ -1,4 +1,4 @@
-$BASE_URL = "../";
+$BASE_URL = ".";
 function switchRegisterForm() {
   let newUserText = document.getElementById("new__user--text");
 
