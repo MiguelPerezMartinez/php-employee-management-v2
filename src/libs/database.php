@@ -2,23 +2,22 @@
 
 class database {
 
-    public $dbase;
-    public $user;
-    public $password;
-    public $dbh;
+    private $dbase;
+    private $user;
+    private $password;
+    private $dbh;
 
-    public function __constructor() {
-        $this->dbase = "employees2";
-        $this->user = "root";
-        $this->password = "";
+    public function __construct() {
+        $this->dbase = DB;
+        $this->user = USER;
+        $this->password = PASS;
         $this->dbh;
     }
 
     public function petition() {
-        echo "dbase: " . $this->dbase .  "</br>" . "user: " . $this->user . "</br>" . "pass: " . $this->password . "</br>" ;
         try {
         $dsn = "mysql:host=localhost;dbname=" . $this->dbase;
-        $this->dbh = new PDO($dsn, "root", "");
+        $this->dbh = new PDO($dsn, $this->user, $this->password);
         } catch (PDOException $e) {
             echo $e->getMessage();
             // Here we shall redirect to error View
