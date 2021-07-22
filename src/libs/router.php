@@ -41,7 +41,7 @@ class Router
           }
         } else {
           $this->executionFlow = new executionFlow;
-          $this->executionFlow->showName('error controller here');
+          $this->executionFlow->showName('method error');
         }
       }
     } else {
