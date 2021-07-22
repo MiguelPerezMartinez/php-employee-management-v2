@@ -10,8 +10,5 @@ abstract class Controller
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('Controller');
 
-    $this->model = new Model;
-    $this->model->data();
-    $this->view = new View;
   }
 }

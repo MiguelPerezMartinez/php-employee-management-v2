@@ -1,5 +1,5 @@
 <?php
-class Model
+abstract class Model
 {
   protected $executionFlow;
 
@@ -8,12 +8,7 @@ class Model
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('Model');
 
-  }
-  public function data() {
-    $db = new Database();
-    $db->getAllEmployees();
-    echo "</br>";
-
+    $this->db = new Database();
   }
   
 }
