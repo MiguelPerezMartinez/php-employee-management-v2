@@ -18,8 +18,13 @@ class EmployeeController extends Controller
   public function allEmployees() {
     $this->model = new EmployeeModel;
     $employees = $this->model->fetchEmployees();
-    
 
     print_r(json_encode($employees));
+  }
+
+  public function deleteEmployee() {
+    echo "hello";
+    $this->model = new EmployeeModel;
+    $this->model->remove();
   }
 }

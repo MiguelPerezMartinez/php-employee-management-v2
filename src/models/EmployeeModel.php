@@ -23,4 +23,10 @@ class EmployeeModel extends Model {
     
         return $result;
     }
+
+    public function remove() {
+
+        print_r($_POST);
+        /* $result = $this->db->petition()->exec("DELETE FROM employees WHERE id = " .  . ") */
+    }
 }

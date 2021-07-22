@@ -109,9 +109,10 @@ function loadEmployeesList() {
           });
         },
         deleteItem: function (item) {
+          console.log("Hello, it's me");
           return $.ajax({
             type: "DELETE",
-            url: `${$BASE_URL}/src/library/employeeController/allEmployees`,
+            url: `${base}/employees/deleteEmployee`,
             data: item,
           });
         },
