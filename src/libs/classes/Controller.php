@@ -3,11 +3,11 @@ abstract class Controller
 {
   protected $executionFlow;
   protected $view;
+  protected $model;
 
   public function __construct()
   {
 
-    $this->view = new View;
   }
 
   function loadModel($name)

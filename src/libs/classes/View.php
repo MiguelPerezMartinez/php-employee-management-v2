@@ -5,11 +5,6 @@ class View
   {
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('View');
-
-    //Temporal
-    // $name = 'login/index';
-    // $this->render($name);
-    //
   }
 
   public function render($name)
