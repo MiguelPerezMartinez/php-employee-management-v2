@@ -5,12 +5,11 @@ class View
   {
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('View');
-
-    require VIEWS . '/' . 'Login/index.php';
   }
 
-  // public function render()
-  // {
-  //   require VIEWS . '/' . 'Login';
-  // }
+  public function render($name)
+  {
+    echo "render view $name";
+    require VIEWS . "/$name.php";
+  }
 }
