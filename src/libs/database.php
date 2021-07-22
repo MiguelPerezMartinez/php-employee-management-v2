@@ -19,11 +19,8 @@ class database
     public function petition()
     {
         try {
-            echo "try";
-            $dsn = "mysql:host=localhost;dbname=" . $this->dbase;
-            echo "dsn";
+            $dsn = "mysql:host=localhost;dbname=" . $this->dbase . ";charset=UTF8";
             $this->dbh = new PDO($dsn, $this->user, $this->password);
-            echo "dbh";
             return $this->dbh;
         } catch (PDOException $e) {
             echo $e->getMessage();

@@ -2,7 +2,6 @@
 abstract class Model
 {
   protected $executionFlow;
-  protected $db;
 
   public function __construct()
   {
