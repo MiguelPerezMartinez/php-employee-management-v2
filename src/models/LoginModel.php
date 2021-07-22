@@ -11,6 +11,7 @@ class LoginModel
     //$result = select user from database (check for username/email)
     //if $result, set $user and check password, if is ok
     //set $_SESSION variables and return true
+    echo $username . " " . $password;
     return true;
   }
 }

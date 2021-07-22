@@ -57,7 +57,7 @@ class Router
 
   public function setController()
   {
-    $this->controller = ucfirst(strtolower($this->uri[2] === '' ? 'Login' : $this->uri[2]));
+    $this->controller = ucfirst(strtolower($this->uri[2] === '' ? 'login' : $this->uri[2]));
   }
 
   public function setMethod()
