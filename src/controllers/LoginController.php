@@ -20,9 +20,15 @@ class LoginController extends Controller
 
   function login()
   {
-    $result = $this->model->login('test', 'test');
+    $result = $this->model->login($_POST['username'], $_POST['password']);
     if ($result) {
-      header('Location: ' . BASE_URL . 'employee/dashboard');
+      $view = "employee/dashboard";
+      header('Location: ' . BASE_URL . $view);
+      $this->view->render($view);
+    } else {
+      $view = "login/index";
+      header('Location: ' . BASE_URL . $view);
+      $this->view->render($view);
     }
   }
 }

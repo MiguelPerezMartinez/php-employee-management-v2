@@ -2,6 +2,7 @@
 abstract class Model
 {
   protected $executionFlow;
+  protected $db;
 
   public function __construct()
   {
@@ -10,5 +11,4 @@ abstract class Model
 
     $this->db = new Database();
   }
-  
 }

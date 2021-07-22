@@ -7,7 +7,7 @@ abstract class Controller
 
   public function __construct()
   {
-
+    $this->view = new View;
   }
 
   function loadModel($name)
@@ -15,6 +15,7 @@ abstract class Controller
     $name = ucfirst(strtolower($name));
     require_once MODELS . "/{$name}Model.php";
     $model = "{$name}Model";
+    echo $model;
     $this->model = new $model;
   }
 }
