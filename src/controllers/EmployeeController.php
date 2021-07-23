@@ -15,6 +15,22 @@ class EmployeeController extends Controller
     $this->view->render($view);
   }
 
+  public function employee($id="") {
+    if (isset($id)) {
+      $view = "Employee/employee";
+      
+      $this->model = new EmployeeModel;
+      $employee = $this->model->fetchSingle($id);
+
+      $this->view->employee = $employee;
+      $this->view->render($view);
+
+    } else {
+      $view = "Employee/employee";
+      $this->view->render($view);
+    }
+  }
+
   public function allEmployees() {
     $this->model = new EmployeeModel;
     $employees = $this->model->fetchEmployees();

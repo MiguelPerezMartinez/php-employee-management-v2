@@ -26,6 +26,23 @@ class EmployeeModel extends Model
         return $result;
     }
 
+    public function fetchSingle($id)
+    {
+
+        $stmt = $this->db->petition()->prepare("SELECT * FROM employees WHERE id = $id");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+
+        /* $result = [];
+        while ($row = $stmt->fetch()) {
+            array_push($result, $row);
+        } */
+
+        $result = $stmt->fetch();
+    
+        return $result;
+    }
+
     public function remove($id) {
 
         if ($id) {

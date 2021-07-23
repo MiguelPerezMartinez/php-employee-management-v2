@@ -21,7 +21,7 @@ function switchRegisterForm() {
   }
 }
 
-function carrousel_images() {
+/* function carrousel_images() {
   $.ajax({
     url: "../src/library/avatarsApi.php",
     type: "post",
@@ -44,7 +44,7 @@ function carrousel_images() {
     });
     createCarrousel();
   }
-}
+} */
 
 function createCarrousel() {
   $(".owl-carousel").owlCarousel({
@@ -79,11 +79,11 @@ function createCarrousel() {
 }
 
 function editEmployee(row) {
-  window.location = `${window.location.pathname}/../../src/employee.php?id=${row.item.id}`;
+  window.location = `${base}Employee/employee/${row.item.id}`;
 }
 
 function createNewEmployee() {
-  window.location = `${window.location.pathname}/../../src/employee.php`;
+  window.location = `${base}Employee/employee`;
 }
 
 function loadEmployeesList() {
