@@ -10,6 +10,7 @@ abstract class Controller
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('Controller');
     $this->view = new View;
+    $this->session = new SessionController;
   }
 
   function loadModel($name)

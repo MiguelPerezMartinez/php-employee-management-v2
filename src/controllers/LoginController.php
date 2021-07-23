@@ -7,7 +7,6 @@ class LoginController extends Controller
   {
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('Login controller');
-    $this->session = new SessionController;
 
     parent::__construct();
     $this->loadModel('login');
@@ -18,8 +17,8 @@ class LoginController extends Controller
     if ($this->session->checkSession()) {
       $view = "employee/dashboard";
       header('Location: ' . BASE_URL . $view);
-      $this->view->render($view);
     } else {
+      $this->view->test = !$this->session->checkSession();
       $view = "login/index";
       $this->view->render($view);
     }
@@ -31,11 +30,9 @@ class LoginController extends Controller
     if ($this->session->checkSession()) {
       $view = "employee/dashboard";
       header('Location: ' . BASE_URL . $view);
-      $this->view->render($view);
     } else {
       $view = "login/index";
       header('Location: ' . BASE_URL . $view);
-      $this->view->render($view);
     }
   }
 
@@ -44,6 +41,5 @@ class LoginController extends Controller
     session_destroy();
     $view = "login/index";
     header('Location: ' . BASE_URL . $view);
-    $this->view->render($view);
   }
 }
