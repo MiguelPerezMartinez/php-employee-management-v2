@@ -1,5 +1,3 @@
-<?php print_r($this->employee) ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +41,7 @@
 	</section>
 
 	<main class="d-flex w-100 min-vh-50 justify-content-center align-item-center">
-		<form action="<?= BASE_URL ?>Employee/submitEmployee" method="POST" class="d-flex flex-column gap-3 p-2" name="employeeForm" id="employeeForm">
+		<form action="<?= isset($this->employee) ? BASE_URL .'employee/updateEmployee/'. $this->employee['id'] : BASE_URL.'employee/submitEmployee' ?>" method="POST" class="d-flex flex-column gap-3 p-2" name="employeeForm" id="employeeForm">
 			<div class="d-flex flex-row gap-3 p-2 newUserForm">
 				<section class="d-flex flex-column gap-3 p-2" id="formColumnOne">
 					<div class="w-100 d-flex flex-column justify-content-center pt-2 h-100">
@@ -52,7 +50,7 @@
 							<div class="d-flex justify-content-center align-item-center">
 								<i class="fas fa-users"></i>
 							</div>
-							<input class="form-control form-control-dark w-100" name="name" id="namea" type="text" placeholder="" >
+							<input class="form-control form-control-dark w-100" name="name" type="text" placeholder="" value="<?= isset($this->employee['name']) ? $this->employee['name'] : '' ?>">
 						</div>
 					</div>
 					<div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -61,7 +59,7 @@
 							<div class="d-flex justify-content-center align-item-center">
 								<i class="fas fa-envelope"></i>
 							</div>
-							<input class="form-control form-control-dark w-100" name="email" type="text" placeholder="" >
+							<input class="form-control form-control-dark w-100" name="email" type="text" placeholder="" value="<?= isset($this->employee['email']) ? $this->employee['email'] : '' ?>" >
 						</div>
 					</div>
 					<div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -70,7 +68,7 @@
 							<div class="d-flex justify-content-center align-item-center">
 								<i class="fas fa-city"></i>
 							</div>
-							<input class="form-control form-control-dark w-100" name="city" type="text" placeholder="" >
+							<input class="form-control form-control-dark w-100" name="city" type="text" placeholder="" value="<?= isset($this->employee['city']) ? $this->employee['city'] : '' ?>" >
 						</div>
 					</div>
 					<div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -79,7 +77,7 @@
 							<div class="d-flex justify-content-center align-item-center">
 								<i class="fas fa-flag-usa"></i>
 							</div>
-							<input class="form-control form-control-dark w-100" name="state" type="text" placeholder="" >
+							<input class="form-control form-control-dark w-100" name="state" type="text" placeholder="" value="<?= isset($this->employee['state']) ? $this->employee['state'] : '' ?>" >
 						</div>
 					</div>
 					<div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -88,7 +86,7 @@
 							<div class="d-flex justify-content-center align-item-center">
 								<i class="fas fa-mail-bulk"></i>
 							</div>
-							<input class="form-control form-control-dark w-100" name="postalCode" type="text" placeholder="" >
+							<input class="form-control form-control-dark w-100" name="postalCode" type="text" placeholder="" value="<?= isset($this->employee['postalCode']) ? $this->employee['postalCode'] : '' ?>" >
 						</div>
 					</div>
 				</section>
@@ -99,7 +97,7 @@
 							<div class="d-flex justify-content-center align-item-center">
 								<i class="fas fa-hand-scissors"></i>
 							</div>
-							<input class="form-control form-control-dark w-100" name="LastName" type="text" placeholder="" >
+							<input class="form-control form-control-dark w-100" name="lastName" type="text" placeholder="" value="<?= isset($this->employee['lastName']) ? $this->employee['lastName'] : '' ?>" >
 						</div>
 					</div>
 					<div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -108,7 +106,7 @@
 							<div class="d-flex justify-content-center align-item-center">
 								<i class="fas fa-venus-mars"></i>
 							</div>
-							<input class="form-control form-control-dark w-100" name="gender" type="text" placeholder="" >
+							<input class="form-control form-control-dark w-100" name="gender" type="text" placeholder="" value="<?= isset($this->employee['gender']) ? $this->employee['gender'] : '' ?>" >
 						</div>
 					</div>
 					<div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -117,7 +115,7 @@
 							<div class="d-flex justify-content-center align-item-center">
 								<i class="fas fa-road"></i>
 							</div>
-							<input class="form-control form-control-dark w-100" name="streetAddress" type="text" placeholder="" >
+							<input class="form-control form-control-dark w-100" name="streetAddress" type="text" placeholder="" value="<?= isset($this->employee['streetAddress']) ? $this->employee['streetAddress'] : '' ?>" >
 						</div>
 					</div>
 					<div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -126,7 +124,7 @@
 							<div class="d-flex justify-content-center align-item-center">
 								<i class="fas fa-baby-carriage"></i>
 							</div>
-							<input class="form-control form-control-dark w-100" name="age" type="text" placeholder="" >
+							<input class="form-control form-control-dark w-100" name="age" type="text" placeholder="" value="<?= isset($this->employee['age']) ? $this->employee['age'] : '' ?>" >
 						</div>
 					</div>
 					<div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -135,14 +133,14 @@
 							<div class="d-flex justify-content-center align-item-center">
 								<i class="fas fa-mobile-alt"></i>
 							</div>
-							<input class="form-control form-control-dark w-100" name="phoneNumber" type="text" placeholder="" >
+							<input class="form-control form-control-dark w-100" name="phoneNumber" type="text" placeholder="" value="<?= isset($this->employee['phoneNumber']) ? $this->employee['phoneNumber'] : '' ?>" >
 						</div>
 					</div>
 				</section>
 			</div>
 			<div class="px-3">
 				<button type="submit" name="submitEmployee" class="btn btn-primary border pt-3 pb-3 text-light">Submit</button>
-				<a href="./dashboard.php">
+				<a href="<?= BASE_URL ?>/dashboard">
 					<button type="button" name="return" class="btn btn-light border pt-3 pb-3 text-dark">Return</button>
 				</a>
 			</div>
