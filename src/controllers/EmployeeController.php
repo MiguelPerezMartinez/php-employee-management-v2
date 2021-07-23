@@ -8,7 +8,6 @@ class EmployeeController extends Controller
     parent::__construct();
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('Employee controller');
-    $this->session = new SessionController;
   }
 
   public function dashboard()
@@ -26,7 +25,6 @@ class EmployeeController extends Controller
   {
     $this->model = new EmployeeModel;
     $employees = $this->model->fetchEmployees();
-
 
     print_r(json_encode($employees));
   }
