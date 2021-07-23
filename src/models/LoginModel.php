@@ -8,9 +8,11 @@ class LoginModel extends Model
 
   public function login($username, $password)
   {
-    $stmt = $this->db->petition()->prepare("SELECT * FROM users WHERE name='$username'");
+    $stmt = $this->db->petition()->prepare("SELECT * FROM users WHERE name = :name");
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    $stmt->execute();
+    $stmt->execute([
+      'name' => "$username"
+    ]);
 
     $result = $stmt->fetch();
 

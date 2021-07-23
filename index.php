@@ -10,7 +10,7 @@ require_once 'src/models/EmployeeModel.php';
 require_once 'src/libs/classes/View.php';
 require_once 'src/libs/classes/Controller.php';
 
-require 'src/libs/Router.php';
+require_once 'src/libs/Router.php';
 
 $router = new Router;
 
