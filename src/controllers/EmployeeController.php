@@ -50,10 +50,22 @@ class EmployeeController extends Controller
     $update = $this->model->put($id);
 
     if ($update) {
-      echo "funcionó";
       header("Location: " . BASE_URL . "employee/dashboard");
     } else {
-      echo "NOP</br>";
+      echo "ERROR</br>";
+      $view = "error/error";
+      $this->view->render($view);
+    }
+  }
+
+  public function submitEmployee() {
+    $this->model = new EmployeeModel;
+    $created = $this->model->create();
+
+    if ($created) {
+      header("Location: " . BASE_URL . "employee/dashboard");
+    } else {
+      echo "ERROR</br>";
       $view = "error/error";
       $this->view->render($view);
     }

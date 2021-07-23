@@ -70,6 +70,31 @@ class EmployeeModel extends Model
         }
     }
 
+    public function create()
+    {
+        $stmt = $this->db->petition()->prepare("INSERT INTO employees (name, lastName, email, gender, city, streetAddress, state, age, postalCode, phoneNumber) VALUES (:name, :lastName, :email, :gender, :city, :streetAddress, :state, :age, :postalCode, :phoneNumber)");
+        try {
+            $stmt->execute([
+                'name' => $_POST['name'],
+                'lastName' => $_POST['lastName'],
+                'email' => $_POST['email'],
+                'gender' => $_POST['gender'],
+                'city' => $_POST['city'],
+                'streetAddress' => $_POST['streetAddress'],
+                'state' => $_POST['state'],
+                'age' => $_POST['age'],
+                'postalCode' => $_POST['postalCode'],
+                'phoneNumber' => $_POST['phoneNumber'],
+            ]);
+            $this->db = null;
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+            $this->db = null;
+            return false;
+        }
+    }
+
     public function remove($id)
     {
 
