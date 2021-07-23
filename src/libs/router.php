@@ -9,7 +9,6 @@ class Router
 
   public function __construct()
   {
-    session_start();
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('Router');
 
@@ -43,11 +42,15 @@ class Router
         } else {
           $this->executionFlow = new executionFlow;
           $this->executionFlow->showName('method error');
+          $view = "login/index";
+          header('Location: ' . BASE_URL . $view);
         }
       }
     } else {
       $this->executionFlow = new executionFlow;
       $this->executionFlow->showName('error controller here');
+      $view = "login/index";
+      header('Location: ' . BASE_URL . $view);
     }
   }
 
