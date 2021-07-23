@@ -8,6 +8,7 @@ class EmployeeController extends Controller
     parent::__construct();
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('Employee controller');
+    $this->loadModel('employee');
   }
 
   public function dashboard()

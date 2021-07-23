@@ -1,6 +1,6 @@
 <?php
 //HOST
-define('HOST', 'localhost')
+define('HOST', 'localhost');
 
 // Database
 define('DB', 'employees2');
@@ -10,4 +10,3 @@ define('USER', 'root');
 
 // PASSWORD
 define('PASS', '');
-
