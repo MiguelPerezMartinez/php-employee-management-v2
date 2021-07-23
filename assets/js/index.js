@@ -58,7 +58,7 @@ function createCarrousel() {
 }
 
 function editEmployee(row) {
-  window.location = `${base}Employee/employee/${row.item.id}`;
+  window.location = `${base}Employee/current/${row.item.id}`;
 }
 
 function createNewEmployee() {

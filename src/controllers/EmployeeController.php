@@ -22,18 +22,21 @@ class EmployeeController extends Controller
     }
   }
 
-  public function employee($id="") {
-    if ($id != "") {
-      $view = "Employee/employee";
-      
-      $this->model = new EmployeeModel;
-      $employee = $this->model->fetchSingle($id);
-      
+  public function employee() {
+      $view = "employee/employee";
+      $this->view->render($view);
+  }
+
+  public function current($id) {
+    $this->model = new EmployeeModel;
+    $employee = $this->model->fetchSingle($id);
+
+    if ($employee) {
+      $view = "employee/employee";
       $this->view->employee = $employee;
       $this->view->render($view);
-
     } else {
-      $view = "employee/employee";
+      $view = "error/error";
       $this->view->render($view);
     }
   }
