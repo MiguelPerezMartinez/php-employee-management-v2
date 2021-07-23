@@ -29,10 +29,11 @@
 
 	<?php require_once "./assets/templates/header.php"; ?>
 	<main class="min-vh-50 h-100 d-inline-block">
-		<div class="">
+		<div class="" >
 			<div id="employeesList"></div>
 		</div>
 	</main>
+
 	<?php include "./assets/templates/footer.html"; ?>
 	<script src="<?= BASE_URL ?>/assets/js/index.js"></script>
 	<script>

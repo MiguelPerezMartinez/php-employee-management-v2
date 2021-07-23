@@ -21,11 +21,57 @@ class EmployeeController extends Controller
     }
   }
 
-  public function allEmployees()
-  {
+  public function employee($id="") {
+    if ($id != "") {
+      $view = "Employee/employee";
+      
+      $this->model = new EmployeeModel;
+      $employee = $this->model->fetchSingle($id);
+      
+      $this->view->employee = $employee;
+      $this->view->render($view);
+
+    } else {
+      $view = "employee/employee";
+      $this->view->render($view);
+    }
+  }
+
+  public function allEmployees() {
     $this->model = new EmployeeModel;
     $employees = $this->model->fetchEmployees();
 
     print_r(json_encode($employees));
+  }
+
+  public function updateEmployee($id) {
+    $this->model = new EmployeeModel;
+    $update = $this->model->put($id);
+
+    if ($update) {
+      header("Location: " . BASE_URL . "employee/dashboard");
+    } else {
+      echo "ERROR</br>";
+      $view = "error/error";
+      $this->view->render($view);
+    }
+  }
+
+  public function submitEmployee() {
+    $this->model = new EmployeeModel;
+    $created = $this->model->create();
+
+    if ($created) {
+      header("Location: " . BASE_URL . "employee/dashboard");
+    } else {
+      echo "ERROR</br>";
+      $view = "error/error";
+      $this->view->render($view);
+    }
+  }
+
+  public function deleteEmployee($id) {
+    $this->model = new EmployeeModel;
+    $this->model->remove($id);
   }
 }

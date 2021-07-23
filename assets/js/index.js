@@ -1,27 +1,6 @@
 const base = $(".base").data("url");
 
-function switchRegisterForm() {
-  let newUserText = document.getElementById("new__user--text");
-
-  newUserText.addEventListener("click", openNewForm);
-
-  function openNewForm() {
-    let registerForm = document.getElementById("register_form");
-    let flex_not_flex = registerForm.style.display;
-
-    if ((registerForm.style.display = "none")) {
-      registerForm.style.display = "flex";
-      newUserText.innerHTML = "Cancel registration";
-    }
-    if (flex_not_flex === "flex") {
-      registerForm.style.display = "none";
-      newUserText.innerHTML = "New user, register now?";
-    }
-    console.log("clickeed");
-  }
-}
-
-function carrousel_images() {
+/* function carrousel_images() {
   $.ajax({
     url: "../src/library/avatarsApi.php",
     type: "post",
@@ -44,7 +23,7 @@ function carrousel_images() {
     });
     createCarrousel();
   }
-}
+} */
 
 function createCarrousel() {
   $(".owl-carousel").owlCarousel({
@@ -79,11 +58,11 @@ function createCarrousel() {
 }
 
 function editEmployee(row) {
-  window.location = `${window.location.pathname}/../../src/employee.php?id=${row.item.id}`;
+  window.location = `${base}Employee/employee/${row.item.id}`;
 }
 
 function createNewEmployee() {
-  window.location = `${window.location.pathname}/../../src/employee.php`;
+  window.location = `${base}Employee/employee`;
 }
 
 function loadEmployeesList() {
@@ -111,8 +90,8 @@ function loadEmployeesList() {
         deleteItem: function (item) {
           return $.ajax({
             type: "DELETE",
-            url: `${$BASE_URL}/src/library/employeeController/allEmployees`,
             data: item,
+            url: `${base}employee/deleteEmployee/${item["id"]}`,
           });
         },
       },
