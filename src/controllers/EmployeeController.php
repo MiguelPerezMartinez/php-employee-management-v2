@@ -8,11 +8,18 @@ class EmployeeController extends Controller
     parent::__construct();
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('Employee controller');
+    $this->session = new SessionController;
   }
 
-  public function dashboard() {
-    $view = "Employee/dashboard";
-    $this->view->render($view);
+  public function dashboard()
+  {
+    if ($this->session->checkSession()) {
+      $view = "employee/dashboard";
+      $this->view->render($view);
+    } else {
+      $view = "login/index";
+      $this->view->render($view);
+    }
   }
 
   public function employee($id="") {

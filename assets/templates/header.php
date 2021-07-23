@@ -1,5 +1,4 @@
-<header
-  class="
+<header class="
     d-flex
     flex-row
     justify-content-between
@@ -8,15 +7,10 @@
     pt-2
     pb-2
     base
-  "
-  data-url="<?= BASE_URL ?>"
->
+  " data-url="<?= BASE_URL ?>">
   <div class="logo__wrapper">
     <div class="logo__app">
-      <img
-        src="<?= BASE_URL ?>assets/images/Blue Cool and Funky Gaming Logo.gif"
-        alt="Logo malo"
-      />
+      <img src="<?= BASE_URL ?>assets/images/Blue Cool and Funky Gaming Logo.gif" alt="Logo malo" />
     </div>
   </div>
 
@@ -40,16 +34,15 @@
 			</div>
 		</div> -->
     <div class="d-flex justify-content-center align-items-center">
-      <a
-        href="../src/library/loginController.php?logoutClicked=true"
-        class="
+      <a href="../src/library/loginController.php?logoutClicked=true" class="
           d-flex
           justify-content-between
           align-item-center
           text-decoration-none
-        "
-      >
-        <button type="button" class="btn btn-light text-dark">Logout</button>
+        ">
+        <form action="<?= BASE_URL ?>login/logout" method="post">
+          <button type="submit" class="btn btn-light text-dark">Logout</button>
+        </form>
       </a>
     </div>
   </div>

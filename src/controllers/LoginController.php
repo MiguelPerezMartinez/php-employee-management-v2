@@ -7,6 +7,7 @@ class LoginController extends Controller
   {
     $this->executionFlow = new executionFlow;
     $this->executionFlow->showName('Login controller');
+    $this->session = new SessionController;
 
     parent::__construct();
     $this->loadModel('login');
@@ -14,14 +15,20 @@ class LoginController extends Controller
 
   public function index()
   {
-    $view = "login/index";
-    $this->view->render($view);
+    if ($this->session->checkSession()) {
+      $view = "employee/dashboard";
+      header('Location: ' . BASE_URL . $view);
+      $this->view->render($view);
+    } else {
+      $view = "login/index";
+      $this->view->render($view);
+    }
   }
 
   function login()
   {
     $result = $this->model->login($_POST['username'], $_POST['password']);
-    if ($result) {
+    if ($this->session->checkSession()) {
       $view = "employee/dashboard";
       header('Location: ' . BASE_URL . $view);
       $this->view->render($view);
@@ -30,5 +37,13 @@ class LoginController extends Controller
       header('Location: ' . BASE_URL . $view);
       $this->view->render($view);
     }
+  }
+
+  function logout()
+  {
+    session_destroy();
+    $view = "login/index";
+    header('Location: ' . BASE_URL . $view);
+    $this->view->render($view);
   }
 }
