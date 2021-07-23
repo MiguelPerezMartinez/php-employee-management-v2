@@ -1,4 +1,6 @@
 <?php
+//HOST
+define('HOST', 'localhost')
 
 // Database
 define('DB', 'employees2');
