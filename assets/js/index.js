@@ -25,6 +25,17 @@ const base = $(".base").data("url");
   }
 } */
 
+function dynamicNav() {
+  path = window.location.href;
+  if (path.search("dashboard") != -1) {
+    $(".employeeTitle").removeClass("text-light").addClass("text-muted");
+    $(".dashboardTitle").removeClass("text-muted").addClass("text-light");
+  } else {
+    $(".dashboardTitle").removeClass("text-light").addClass("text-muted");
+    $(".employeeTitle").removeClass("text-muted").addClass("text-light");
+  }
+}
+
 function createCarrousel() {
   $(".owl-carousel").owlCarousel({
     loop: true,
@@ -58,7 +69,7 @@ function createCarrousel() {
 }
 
 function editEmployee(row) {
-  window.location = `${base}Employee/employee/${row.item.id}`;
+  window.location = `${base}Employee/current/${row.item.id}`;
 }
 
 function createNewEmployee() {
@@ -167,3 +178,5 @@ function loadEmployeesList() {
     });
   });
 }
+
+dynamicNav();

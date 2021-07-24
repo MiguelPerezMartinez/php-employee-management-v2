@@ -18,10 +18,10 @@
     class="d-flex flex-row align-items-center justify-content-start w-100 px-4"
   >
     <a href="<?= BASE_URL ?>employee/dashboard" class="text-decoration-none">
-      <h5 class="px-3 text-light">Dashboard</h5>
+      <h5 class="dashboardTitle px-3 text-muted text-light">Dashboard</h5>
     </a>
     <a href="<?= BASE_URL ?>employee/employee" class="text-decoration-none">
-      <h5 class="px-3 text-muted">Employee</h5>
+      <h5 class="employeeTitle px-3 text-muted text-light">Employee</h5>
     </a>
   </div>
   <div class="logout__wrapper d-flex justify-content-between align-item-center">
