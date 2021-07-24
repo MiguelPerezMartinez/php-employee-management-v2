@@ -5,15 +5,16 @@ mysql -u root -p
 Or if you have your own user replace "root" for your user name.
 */
 
+DROP DATABASE IF EXISTS employees;
 CREATE DATABASE employees2;
 USE employees2;
 
 CREATE TABLE users(
-   userId   INTEGER  NOT NULL PRIMARY KEY 
-  ,`name`     TEXT(50) NOT NULL
-  ,`password` TEXT(60) NOT NULL
-  ,email    TEXT(40) NOT NULL
-  ,auth     TEXT(15) NOT NULL
+  userId   INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name`     TEXT(50) NOT NULL,
+  `password` TEXT(60) NOT NULL,
+  email    TEXT(40) NOT NULL,
+  auth     TEXT(15) NOT NULL
 );
 
 INSERT INTO users (userId,`name`,`password`,email,auth) VALUES (1,'admin','$2y$10$nuh1LEwFt7Q2/wz9/CmTJO91stTBS4cRjiJYBY3sVCARnllI.wzBC','admin@assemblerschool.com','admin'),
@@ -25,20 +26,21 @@ INSERT INTO users (userId,`name`,`password`,email,auth) VALUES (1,'admin','$2y$1
 
 
 CREATE TABLE employees(
-   id            INTEGER  NOT NULL PRIMARY KEY 
-  ,`name`          TEXT(50) NOT NULL
-  ,lastName      TEXT(50)
-  ,email         TEXT(40)
-  ,gender        TEXT(30)
-  ,city          TEXT(30)
-  ,streetAddress TEXT(80)
-  ,`state`         TEXT(30)
-  ,age           INTEGER 
-  ,postalCode    INTEGER 
-  ,phoneNumber   BIGINT
+  id            INTEGER  NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name`        TEXT(50) NOT NULL,
+  lastName      TEXT(50),
+  email         TEXT(40),
+  gender        TEXT(30),
+  city          TEXT(30),
+  streetAddress TEXT(80),
+  `state`       TEXT(30),
+  age           INTEGER,
+  postalCode    INTEGER,
+  phoneNumber   BIGINT
 );
 
-INSERT INTO employees(id,`name`,lastName,email,gender,city,streetAddress,`state`,age,postalCode,phoneNumber) VALUES (1,'Rack','Lei','jackon@network.com','man','San Jone','126','CA',24,394221,7383627627),
+INSERT INTO employees(id,`name`,lastName,email,gender,city,streetAddress,`state`,age,postalCode,phoneNumber) 
+VALUES (1,'Rack','Lei','jackon@network.com','man','San Jone','126','CA',24,394221,7383627627),
 (2,'John','Doe','jhondoe@foo.com','man','New York','89','WA',34,09889,1283645645),
 (3,'Leila','Mills','mills@leila.com','woman','San Diego','55','CA',29,098765,9983632461),
 (4,'Richard','Desmond','dismond@foo.com','man','Salt lake city','90','UT',30,457320,90876987654),
@@ -49,13 +51,14 @@ INSERT INTO employees(id,`name`,lastName,email,gender,city,streetAddress,`state`
 
 
 CREATE TABLE images_mock(
-   `name`   TEXT(30) NOT NULL
-  ,email    TEXT(40) NOT NULL
-  ,position TEXT(80) NOT NULL
-  ,photo    TEXT(200) NOT NULL
+  `name`   TEXT(30) NOT NULL,
+  email    TEXT(40) NOT NULL,
+  position TEXT(80) NOT NULL,
+  photo    TEXT(200) NOT NULL,
 );
 
-INSERT INTO images_mock(`name`,email,position,photo) VALUES ('Yvonne Strahovski','yvonne.strahovski@gmail.com','Software Engineer','https://m.media-amazon.com/images/M/MV5BMzI5NDIzNTQ1Nl5BMl5BanBnXkFtZTgwMjQ0Mzc1MTE@._V1_UY256_CR4,0,172,256_AL_.jpg'),
+INSERT INTO images_mock(`name`,email,position,photo) 
+VALUES ('Yvonne Strahovski','yvonne.strahovski@gmail.com','Software Engineer','https://m.media-amazon.com/images/M/MV5BMzI5NDIzNTQ1Nl5BMl5BanBnXkFtZTgwMjQ0Mzc1MTE@._V1_UY256_CR4,0,172,256_AL_.jpg'),
 ('Mario Palmer','mario.palmer@gmail.com','Senior Developer','https://randomuser.me/api/portraits/men/33.jpg'),
 ('Ali Anari','ali.anari@gmail.com','Customer Service','https://pbs.twimg.com/profile_images/647526574120529920/T5rm0m7W.jpg'),
 ('Ariyanna Hicks','ariyanna.hicks@gmail.com','Product Designer','https://i.imgur.com/Qz5CrD0.jpg'),
