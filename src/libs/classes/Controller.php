@@ -7,8 +7,6 @@ abstract class Controller
 
   public function __construct()
   {
-    $this->executionFlow = new executionFlow;
-    $this->executionFlow->showName('Controller');
     $this->view = new View;
     $this->session = new SessionController;
   }

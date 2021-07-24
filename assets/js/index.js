@@ -27,12 +27,18 @@ const base = $(".base").data("url");
 
 function dynamicNav() {
   path = window.location.href;
-  if (path.search("dashboard") != -1) {
-    $(".employeeTitle").removeClass("text-light").addClass("text-muted");
+  if (path.search("employee/dashboard") != -1) {
     $(".dashboardTitle").removeClass("text-muted").addClass("text-light");
-  } else {
+    $(".employeeTitle").removeClass("text-light").addClass("text-muted");
+    $(".userTitle").removeClass("text-light").addClass("text-muted");
+  } else if (path.search("employee/employee") != -1) {
     $(".dashboardTitle").removeClass("text-light").addClass("text-muted");
     $(".employeeTitle").removeClass("text-muted").addClass("text-light");
+    $(".userTitle").removeClass("text-light").addClass("text-muted");
+  } else {
+    $(".dashboardTitle").removeClass("text-light").addClass("text-muted");
+    $(".employeeTitle").removeClass("text-light").addClass("text-muted");
+    $(".userTitle").removeClass("text-muted").addClass("text-light");
   }
 }
 
@@ -75,6 +81,8 @@ function editEmployee(row) {
 function createNewEmployee() {
   window.location = `${base}Employee/employee`;
 }
+
+//EMployees JSGrid
 
 function loadEmployeesList() {
   $.getJSON(`${base}employee/allEmployees`, function (data) {
@@ -175,6 +183,96 @@ function loadEmployeesList() {
       rowClick: function (item) {
         editEmployee(item);
       },
+    });
+  });
+}
+
+//Users JSGrid
+
+function loadUsersList() {
+  $.getJSON(`${base}user/allUsers`, function (data) {
+    $("#usersList").jsGrid({
+      height: "85vh",
+      width: "100%",
+
+      editing: true,
+      sorting: true,
+      paging: true,
+      autoload: true,
+      pageSize: 15,
+      pageButtonCount: 3,
+      deleteConfirm: "Do you confirm you want to delete employee?",
+
+      controller: {
+        loadData: function () {
+          return $.ajax({
+            type: "GET",
+            url: `${base}user/allUsers`,
+            dataType: "json",
+          });
+        },
+        updateItem: function (item) {
+          return $.ajax({
+            type: "POST",
+            data: item,
+            url: `${base}user/updateUser/${item["userId"]}`,
+            dataType: "json",
+          });
+        },
+        deleteItem: function (item) {
+          return $.ajax({
+            type: "DELETE",
+            data: item,
+            url: `${base}user/deleteUser/${item["id"]}`,
+          });
+        },
+      },
+
+      fields: [
+        {
+          name: "userId",
+          title: "User ID",
+          align: "",
+          width: 50,
+        },
+        {
+          name: "name",
+          validate: "required",
+          title: "Name",
+          type: "text",
+          align: "",
+          width: 200,
+        },
+        {
+          name: "email",
+          validate: "required",
+          title: "Email",
+          type: "text",
+          align: "",
+          width: 200,
+        },
+        {
+          name: "auth",
+          title: "Credentials",
+          type: "text",
+          align: "",
+          width: 100,
+        },
+        {
+          type: "control",
+          modeSwitchButton: false,
+          editButton: false,
+          headerTemplate: function () {
+            return $("<button>")
+              .attr("type", "button")
+              .attr("class", "jsgrid-button jsgrid-insert-button")
+              .on("click", function () {
+                createNewEmployee();
+              });
+          },
+          width: 100,
+        },
+      ],
     });
   });
 }

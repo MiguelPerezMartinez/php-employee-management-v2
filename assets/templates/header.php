@@ -23,8 +23,8 @@
     </a>
     <?php
     if ($_SESSION['auth'] == 'admin') {
-      echo '<a href="' . BASE_URL . 'users/dashboard" class="text-decoration-none">
-      <h5 class="px-3 text-muted">Users</h5>
+      echo '<a href="' . BASE_URL . 'user/dashboard" class="text-decoration-none">
+      <h5 class="userTitle px-3 text-muted">Users</h5>
     </a>';
     }
     ?>
