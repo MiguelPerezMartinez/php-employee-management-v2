@@ -107,9 +107,10 @@ class EmployeeModel extends Model
                 $this->db = null;
                 return true;
             } catch (PDOException $e) {
-                $this->db = null;
                 return false;
             }
+        } else {
+            return false;
         }
     }
 }

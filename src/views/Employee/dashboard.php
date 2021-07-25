@@ -34,7 +34,10 @@
 		</div>
 	</main>
 
-	<?php include "./assets/templates/footer.html"; ?>
+	<?php include "./assets/templates/footer.html"; 
+	isset($this->updateError) ? print($this->updateError) : "";
+	isset($this->deleteError) ? print($this->deleteError) : "";
+	?>
 	<script src="<?= BASE_URL ?>/assets/js/index.js"></script>
 	<script>
 		loadEmployeesList();

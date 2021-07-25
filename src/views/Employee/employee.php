@@ -146,7 +146,9 @@
 			</div>
 		</form>
 	</main>
-	<?php include "assets/templates/footer.html"; ?>
+	<?php include "assets/templates/footer.html";
+	isset($this->submitError) ? print($this->submitError) : "";
+	?>
 	<script src="<?= BASE_URL ?>/assets/js/index.js"></script>
 	<!-- <script>
 		carrousel_images();
