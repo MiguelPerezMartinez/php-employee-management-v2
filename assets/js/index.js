@@ -27,15 +27,18 @@ const base = $(".base").data("url");
 
 function dynamicNav() {
   path = window.location.href;
-  if (path.search("employee/dashboard") != -1) {
+  if (path.includes("employee/dashboard")) {
     $(".dashboardTitle").removeClass("text-muted").addClass("text-light");
     $(".employeeTitle").removeClass("text-light").addClass("text-muted");
     $(".userTitle").removeClass("text-light").addClass("text-muted");
-  } else if (path.search("employee/employee") != -1) {
+  } else if (
+    path.includes("employee/employee") ||
+    path.includes("Employee/current")
+  ) {
     $(".dashboardTitle").removeClass("text-light").addClass("text-muted");
     $(".employeeTitle").removeClass("text-muted").addClass("text-light");
     $(".userTitle").removeClass("text-light").addClass("text-muted");
-  } else {
+  } else if (path.includes("user/dashboard")) {
     $(".dashboardTitle").removeClass("text-light").addClass("text-muted");
     $(".employeeTitle").removeClass("text-light").addClass("text-muted");
     $(".userTitle").removeClass("text-muted").addClass("text-light");
