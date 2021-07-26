@@ -25,13 +25,14 @@ const base = $(".base").data("url");
   }
 } */
 
+
 function dynamicNav() {
   path = window.location.href;
   if (path.includes("employee/dashboard")) {
     $(".dashboardTitle").removeClass("text-muted").addClass("text-light");
     $(".employeeTitle").removeClass("text-light").addClass("text-muted");
     $(".userTitle").removeClass("text-light").addClass("text-muted");
-  } else if (
+  } else if ()
     path.includes("employee/employee") ||
     path.includes("Employee/current")
   ) {
