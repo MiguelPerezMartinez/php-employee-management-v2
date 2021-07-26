@@ -23,8 +23,20 @@ class database
             $this->dbh = new PDO($dsn, $this->user, $this->password);
             return $this->dbh;
         } catch (PDOException $e) {
-            echo $e->getMessage();
-            // Here we shall redirect to error View
+            return $e->getCode();
+        }
+    }
+
+    public function newDatabase() {
+        $sql = file_get_contents(BASE_URL. "/db/create_db.sql");
+        $dsn = "mysql:host=" . HOST . ";charset=UTF8";
+        $this->dbh = new PDO($dsn, $this->user, $this->password);
+        $stmt = $this->dbh->prepare($sql);
+        try {
+            $stmt->execute();
+            $this->db = null;
+        } catch (PDOException $e) {
+            return $e->getCode();
         }
     }
 }
