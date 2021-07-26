@@ -59,9 +59,16 @@ Now you can use, test and experiment with our database.
 
 ## UML Diagram
 
+![UML Diagram](assets/images/UML.png)
+
 ## Resources
 
 \* https://jquery.com/  
 \* https://www.apachefriends.org/es/index.html  
 \* http://js-grid.com/  
 \* https://www.chartjs.org/
+
+## Authors
+
+- [@MiguelPerezMartinez](https://github.com/MiguelPerezMartinez)  
+- [@JordixArnau](https://github.com/JordixArnau)
