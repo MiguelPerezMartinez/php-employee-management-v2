@@ -34,7 +34,7 @@ class UserController extends Controller
     $employee = $this->model->fetchSingle($id);
 
     if ($employee) {
-      $view = "employee/employee";
+      $view = "user/user";
       $this->view->employee = $employee;
       $this->view->render($view);
     } else {
@@ -56,8 +56,11 @@ class UserController extends Controller
     $this->model = new UserModel;
     $update = $this->model->put($id);
 
+    return true;
+
     if ($update) {
-      print_r(json_encode($update));
+      $view = 'user/dashboard';
+      $this->view->render($view);
     } else {
       echo "ERROR</br>";
       $view = "error/error";
@@ -65,14 +68,11 @@ class UserController extends Controller
     }
   }
 
-  public function submitEmployee()
+  public function submitUser()
   {
-    $this->model = new EmployeeModel;
     $created = $this->model->create();
-
-    if ($created) {
-      header("Location: " . BASE_URL . "user/dashboard");
-    } else {
+    return $created;
+    if (!$created) {
       echo "ERROR</br>";
       $view = "error/error";
       $this->view->render($view);
@@ -81,7 +81,6 @@ class UserController extends Controller
 
   public function deleteUser($id)
   {
-    $this->model = new UserModel;
-    $this->model->remove($id);
+    $delete = $this->model->remove($id);
   }
 }

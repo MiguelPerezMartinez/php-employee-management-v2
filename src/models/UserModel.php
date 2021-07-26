@@ -27,41 +27,35 @@ class UserModel extends Model
     return $result;
   }
 
-  // public function fetchSingle($id)
-  // {
+  public function fetchSingle($id)
+  {
 
-  //   $stmt = $this->db->petition()->prepare("SELECT * FROM employees WHERE id = :id");
-  //   $stmt->setFetchMode(PDO::FETCH_ASSOC);
-  //   try {
-  //     $stmt->execute([
-  //       'id' => $id
-  //     ]);
-  //     $result = $stmt->fetch();
-  //     $this->db = null;
-  //     return $result;
-  //   } catch (PDOException $e) {
-  //     return false;
-  //   }
-  // }
+    $stmt = $this->db->petition()->prepare("SELECT * FROM employees WHERE id = :id");
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    try {
+      $stmt->execute([
+        'id' => $id
+      ]);
+      $result = $stmt->fetch();
+      $this->db = null;
+      return $result;
+    } catch (PDOException $e) {
+      return false;
+    }
+  }
 
   public function put($id)
   {
-    $stmt = $this->db->petition()->prepare("UPDATE users SET userId = :userId name = :name, email = :email, auth = :auth WHERE id = :id");
+    $stmt = $this->db->petition()->prepare("UPDATE users SET name = :name, email = :email, auth = :auth WHERE userId = :id");
     try {
       $stmt->execute([
         'name' => $_POST['name'],
         'email' => $_POST['email'],
         'auth' => $_POST['auth'],
-        'userId' => $id
+        'id' => $id
       ]);
 
-      $result = [];
-      while ($row = $stmt->fetch()) {
-        array_push($result, $row);
-      }
-
       $this->db = null;
-      return $result;
     } catch (PDOException $e) {
       echo $e;
       $this->db = null;
@@ -71,19 +65,13 @@ class UserModel extends Model
 
   public function create()
   {
-    $stmt = $this->db->petition()->prepare("INSERT INTO employees (name, lastName, email, gender, city, streetAddress, state, age, postalCode, phoneNumber) VALUES (:name, :lastName, :email, :gender, :city, :streetAddress, :state, :age, :postalCode, :phoneNumber)");
+    $stmt = $this->db->petition()->prepare("INSERT INTO users (name, password, email, auth) VALUES (:name, :password,  :email, :auth)");
     try {
       $stmt->execute([
         'name' => $_POST['name'],
-        'lastName' => $_POST['lastName'],
+        'password' => password_hash($this->randomPass(), PASSWORD_DEFAULT),
         'email' => $_POST['email'],
-        'gender' => $_POST['gender'],
-        'city' => $_POST['city'],
-        'streetAddress' => $_POST['streetAddress'],
-        'state' => $_POST['state'],
-        'age' => $_POST['age'],
-        'postalCode' => $_POST['postalCode'],
-        'phoneNumber' => $_POST['phoneNumber'],
+        'auth' => $_POST['auth'],
       ]);
       $this->db = null;
       return true;
@@ -98,7 +86,7 @@ class UserModel extends Model
   {
 
     if ($id) {
-      $stmt = $this->db->petition()->prepare("DELETE FROM users WHERE id = :id");
+      $stmt = $this->db->petition()->prepare("DELETE FROM users WHERE userId = :id");
       try {
         $stmt->execute([
           'id' => $id
@@ -110,5 +98,17 @@ class UserModel extends Model
         return false;
       }
     }
+  }
+
+  public function randomPass()
+  {
+    $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789!·$%&/()=?¿-.,;:_/*-+";
+    $pass = array();
+    $alphaLength = strlen($alphabet) - 1;
+    for ($i = 0; $i < 8; $i++) {
+      $n = rand(0, $alphaLength);
+      $pass[] = $alphabet[$n];
+    }
+    return implode($pass);
   }
 }

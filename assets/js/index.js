@@ -189,19 +189,25 @@ function loadEmployeesList() {
 
 //Users JSGrid
 
+function showUserRelations(row) {
+  console.log(row.item.userId);
+  // window.location = `${base}user/current/${row.item.id}`;
+}
+
 function loadUsersList() {
   $.getJSON(`${base}user/allUsers`, function (data) {
     $("#usersList").jsGrid({
       height: "85vh",
       width: "100%",
 
+      inserting: true,
       editing: true,
       sorting: true,
       paging: true,
       autoload: true,
       pageSize: 15,
       pageButtonCount: 3,
-      deleteConfirm: "Do you confirm you want to delete employee?",
+      deleteConfirm: "Do you confirm you want to delete user?",
 
       controller: {
         loadData: function () {
@@ -211,19 +217,32 @@ function loadUsersList() {
             dataType: "json",
           });
         },
+        insertItem: function (item) {
+          return $.ajax({
+            type: "POST",
+            url: `${base}user/submitUser`,
+            data: item,
+            success: () => {
+              window.location = `${base}user/dashboard`;
+            },
+          });
+        },
         updateItem: function (item) {
           return $.ajax({
             type: "POST",
             data: item,
             url: `${base}user/updateUser/${item["userId"]}`,
-            dataType: "json",
+            success: (response) => {
+              console.log(item["userId"]);
+              console.log(response);
+            },
           });
         },
         deleteItem: function (item) {
           return $.ajax({
             type: "DELETE",
             data: item,
-            url: `${base}user/deleteUser/${item["id"]}`,
+            url: `${base}user/deleteUser/${item["userId"]}`,
           });
         },
       },
@@ -241,7 +260,7 @@ function loadUsersList() {
           title: "Name",
           type: "text",
           align: "",
-          width: 200,
+          width: 100,
         },
         {
           name: "email",
@@ -254,25 +273,26 @@ function loadUsersList() {
         {
           name: "auth",
           title: "Credentials",
-          type: "text",
+          type: "select",
           align: "",
-          width: 100,
+          width: 50,
+          items: [
+            { Name: "user", Id: "user" },
+            { Name: "admin", Id: "admin" },
+          ],
+          valueField: "Id",
+          textField: "Name",
         },
         {
           type: "control",
           modeSwitchButton: false,
-          editButton: false,
-          headerTemplate: function () {
-            return $("<button>")
-              .attr("type", "button")
-              .attr("class", "jsgrid-button jsgrid-insert-button")
-              .on("click", function () {
-                createNewEmployee();
-              });
-          },
+          editButton: true,
           width: 100,
         },
       ],
+      rowClick: function (item) {
+        showUserRelations(item);
+      },
     });
   });
 }
