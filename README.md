@@ -59,7 +59,7 @@ Now you can use, test and experiment with our database.
 
 ## UML Diagram
 
-![UML Diagram](assets/images/UML.png)
+![image](https://user-images.githubusercontent.com/71381808/126992981-bd055d1f-28a9-4b90-b821-7e3bbabc7c90.png)
 
 ## Resources
 
