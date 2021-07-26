@@ -32,7 +32,7 @@
   <div class="logout__wrapper d-flex justify-content-between align-item-center">
     <div class="d-flex align-items-center">
       <h5 class="text-light">Welcome <span class="text-light"><?= $_SESSION["username"] ?></span></h5>
-    </div>'
+    </div>
     <!-- <div class=" d-flex align-items-center justify-content-center h-100">
 			<div class="profile_picture">
 				<img src='<?= $_SESSION["user_img"] ?>' alt="no user">
