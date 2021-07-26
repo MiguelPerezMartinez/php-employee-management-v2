@@ -17,17 +17,19 @@ class LoginModel extends Model
 
       $result = $stmt->fetch();
 
-      if ($result) {
-        if (password_verify($password, $result['password'])) {
-          $_SESSION['userId'] = $result['userId'];
-          $_SESSION['time'] = time();
-          $_SESSION['lifeTime'] = 60 * 10;
-          // return true;
-        }
+    if ($result) {
+      if (password_verify($password, $result['password'])) {
+        $_SESSION['userId'] = $result['userId'];
+        $_SESSION['username'] = $result['name'];
+        $_SESSION['auth'] = $result['auth'];
+        $_SESSION['time'] = time();
+        $_SESSION['lifeTime'] = 60 * 10;
+        // return true;
       }
       // return false;
     } else {
       return $this->db->petition();
     }
   }
+}
 }

@@ -14,20 +14,25 @@
     </div>
   </div>
 
-  <div
-    class="d-flex flex-row align-items-center justify-content-start w-100 px-4"
-  >
+  <div class="d-flex flex-row align-items-center justify-content-start w-100 px-4">
     <a href="<?= BASE_URL ?>employee/dashboard" class="text-decoration-none">
       <h5 class="dashboardTitle px-3 text-muted text-light">Dashboard</h5>
     </a>
     <a href="<?= BASE_URL ?>employee/employee" class="text-decoration-none">
       <h5 class="employeeTitle px-3 text-muted text-light">Employee</h5>
     </a>
+    <?php
+    if ($_SESSION['auth'] == 'admin') {
+      echo '<a href="' . BASE_URL . 'user/dashboard" class="text-decoration-none">
+      <h5 class="userTitle px-3 text-muted">Users</h5>
+    </a>';
+    }
+    ?>
   </div>
   <div class="logout__wrapper d-flex justify-content-between align-item-center">
     <div class="d-flex align-items-center">
-      <!-- <h5 class="text-light">Welcome <span class="text-light"><?= $_SESSION["username"] ?></span></h5> -->
-    </div>
+      <h5 class="text-light">Welcome <span class="text-light"><?= $_SESSION["username"] ?></span></h5>
+    </div>'
     <!-- <div class=" d-flex align-items-center justify-content-center h-100">
 			<div class="profile_picture">
 				<img src='<?= $_SESSION["user_img"] ?>' alt="no user">

@@ -22,12 +22,14 @@ class EmployeeController extends Controller
     }
   }
 
-  public function employee() {
-      $view = "employee/employee";
-      $this->view->render($view);
+  public function employee()
+  {
+    $view = "employee/employee";
+    $this->view->render($view);
   }
 
-  public function current($id) {
+  public function current($id)
+  {
     $this->model = new EmployeeModel;
     $employee = $this->model->fetchSingle($id);
 
@@ -40,14 +42,16 @@ class EmployeeController extends Controller
     }
   }
 
-  public function allEmployees() {
+  public function allEmployees()
+  {
     $this->model = new EmployeeModel;
     $employees = $this->model->fetchEmployees();
 
     print_r(json_encode($employees));
   }
 
-  public function updateEmployee($id) {
+  public function updateEmployee($id)
+  {
     $this->model = new EmployeeModel;
     $update = $this->model->put($id);
 
@@ -58,7 +62,8 @@ class EmployeeController extends Controller
     }
   }
 
-  public function submitEmployee() {
+  public function submitEmployee()
+  {
     $this->model = new EmployeeModel;
     $created = $this->model->create();
 
@@ -69,7 +74,8 @@ class EmployeeController extends Controller
     }
   }
 
-  public function deleteEmployee($id) {
+  public function deleteEmployee($id)
+  {
     $this->model = new EmployeeModel;
     $removed = $this->model->remove($id);
 
