@@ -27,13 +27,28 @@ class LoginController extends Controller
   function login()
   {
     $result = $this->model->login($_POST['username'], $_POST['password']);
-    if ($this->session->checkSession()) {
-      $view = "employee/dashboard";
-      header('Location: ' . BASE_URL . $view);
+
+    if (gettype($result) === "integer") {
+      if ($result == 1049) {
+        $db = new DataBase;
+        $db->newDatabase();
+        $view = "login/index";
+        header('Location: ' . BASE_URL . $view);
+      } else {
+        $view = "error/connection";
+        header('Location: ' . BASE_URL . $view);
+      }
+
     } else {
-      $view = "login/index";
-      header('Location: ' . BASE_URL . $view);
+      if ($this->session->checkSession()) {
+        $view = "employee/dashboard";
+        header('Location: ' . BASE_URL . $view);
+      } else {
+        $view = "login/index";
+        header('Location: ' . BASE_URL . $view);
+      }
     }
+    
   }
 
   function logout()

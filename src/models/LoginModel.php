@@ -8,22 +8,26 @@ class LoginModel extends Model
 
   public function login($username, $password)
   {
-    $stmt = $this->db->petition()->prepare("SELECT * FROM users WHERE name = :name");
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    $stmt->execute([
-      'name' => "$username"
-    ]);
+    if (gettype($this->db->petition()) === "object") {
+      $stmt = $this->db->petition()->prepare("SELECT * FROM users WHERE name = :name");
+      $stmt->setFetchMode(PDO::FETCH_ASSOC);
+      $stmt->execute([
+        'name' => "$username"
+      ]);
 
-    $result = $stmt->fetch();
+      $result = $stmt->fetch();
 
-    if ($result) {
-      if (password_verify($password, $result['password'])) {
-        $_SESSION['userId'] = $result['userId'];
-        $_SESSION['time'] = time();
-        $_SESSION['lifeTime'] = 60 * 10;
-        // return true;
+      if ($result) {
+        if (password_verify($password, $result['password'])) {
+          $_SESSION['userId'] = $result['userId'];
+          $_SESSION['time'] = time();
+          $_SESSION['lifeTime'] = 60 * 10;
+          // return true;
+        }
       }
+      // return false;
+    } else {
+      return $this->db->petition();
     }
-    // return false;
   }
 }
