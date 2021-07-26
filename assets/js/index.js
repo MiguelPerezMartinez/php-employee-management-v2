@@ -27,12 +27,21 @@ const base = $(".base").data("url");
 
 function dynamicNav() {
   path = window.location.href;
-  if (path.search("dashboard") != -1) {
-    $(".employeeTitle").removeClass("text-light").addClass("text-muted");
+  if (path.includes("employee/dashboard")) {
     $(".dashboardTitle").removeClass("text-muted").addClass("text-light");
-  } else {
+    $(".employeeTitle").removeClass("text-light").addClass("text-muted");
+    $(".userTitle").removeClass("text-light").addClass("text-muted");
+  } else if (
+    path.includes("employee/employee") ||
+    path.includes("Employee/current")
+  ) {
     $(".dashboardTitle").removeClass("text-light").addClass("text-muted");
     $(".employeeTitle").removeClass("text-muted").addClass("text-light");
+    $(".userTitle").removeClass("text-light").addClass("text-muted");
+  } else if (path.includes("user/dashboard")) {
+    $(".dashboardTitle").removeClass("text-light").addClass("text-muted");
+    $(".employeeTitle").removeClass("text-light").addClass("text-muted");
+    $(".userTitle").removeClass("text-muted").addClass("text-light");
   }
 }
 
@@ -75,6 +84,8 @@ function editEmployee(row) {
 function createNewEmployee() {
   window.location = `${base}Employee/employee`;
 }
+
+//EMployees JSGrid
 
 function loadEmployeesList() {
   $.getJSON(`${base}employee/allEmployees`, function (data) {
@@ -174,6 +185,116 @@ function loadEmployeesList() {
       ],
       rowClick: function (item) {
         editEmployee(item);
+      },
+    });
+  });
+}
+
+//Users JSGrid
+
+function showUserRelations(row) {
+  console.log(row.item.userId);
+  // window.location = `${base}user/current/${row.item.id}`;
+}
+
+function loadUsersList() {
+  $.getJSON(`${base}user/allUsers`, function (data) {
+    $("#usersList").jsGrid({
+      height: "85vh",
+      width: "100%",
+
+      inserting: true,
+      editing: true,
+      sorting: true,
+      paging: true,
+      autoload: true,
+      pageSize: 15,
+      pageButtonCount: 3,
+      deleteConfirm: "Do you confirm you want to delete user?",
+
+      controller: {
+        loadData: function () {
+          return $.ajax({
+            type: "GET",
+            url: `${base}user/allUsers`,
+            dataType: "json",
+          });
+        },
+        insertItem: function (item) {
+          return $.ajax({
+            type: "POST",
+            url: `${base}user/submitUser`,
+            data: item,
+            success: () => {
+              window.location = `${base}user/dashboard`;
+            },
+          });
+        },
+        updateItem: function (item) {
+          return $.ajax({
+            type: "POST",
+            data: item,
+            url: `${base}user/updateUser/${item["userId"]}`,
+            success: (response) => {
+              console.log(item["userId"]);
+              console.log(response);
+            },
+          });
+        },
+        deleteItem: function (item) {
+          return $.ajax({
+            type: "DELETE",
+            data: item,
+            url: `${base}user/deleteUser/${item["userId"]}`,
+          });
+        },
+      },
+
+      fields: [
+        {
+          name: "userId",
+          title: "User ID",
+          align: "",
+          width: 50,
+        },
+        {
+          name: "name",
+          validate: "required",
+          title: "Name",
+          type: "text",
+          align: "",
+          width: 100,
+        },
+        {
+          name: "email",
+          validate: "required",
+          title: "Email",
+          type: "text",
+          align: "",
+          width: 200,
+        },
+        {
+          name: "auth",
+          title: "Credentials",
+          type: "select",
+          align: "",
+          width: 50,
+          items: [
+            { Name: "user", Id: "user" },
+            { Name: "admin", Id: "admin" },
+          ],
+          valueField: "Id",
+          textField: "Name",
+        },
+        {
+          type: "control",
+          modeSwitchButton: false,
+          editButton: true,
+          width: 100,
+        },
+      ],
+      rowClick: function (item) {
+        showUserRelations(item);
       },
     });
   });

@@ -5,8 +5,6 @@ abstract class Model
 
   public function __construct()
   {
-    $this->executionFlow = new executionFlow;
-    $this->executionFlow->showName('Model');
 
     $this->db = new Database();
   }

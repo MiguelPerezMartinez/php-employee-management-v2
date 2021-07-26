@@ -22,7 +22,7 @@ class EmployeeModel extends Model
         while ($row = $stmt->fetch()) {
             array_push($result, $row);
         }
-    
+
         $this->db = null;
         return $result;
     }

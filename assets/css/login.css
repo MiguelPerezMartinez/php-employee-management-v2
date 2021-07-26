@@ -5,22 +5,28 @@
   box-sizing: border-box;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-*::-webkit-scrollbar{
-	width: 10px;
-	background-color: rgb(122, 122, 122);
+*::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgb(122, 122, 122);
 }
-*::-webkit-scrollbar-thumb{
-	width: 10px;
-	background-color: rgb(0, 0, 0);
-	border-radius: 5px;
+*::-webkit-scrollbar-thumb {
+  width: 10px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 5px;
 }
 
-p, h1, h2, h3, h4, h5, h6{
-	margin: 0 0 0 0 ;
-	padding: 0 0 0 0;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 
 textarea:focus,
@@ -81,20 +87,24 @@ input:focus {
   text-decoration: underline;
 }
 
-.advise__login{
-	min-height: 50px;
-	margin-bottom: 80px;
-	font-weight: bold;
+.advise__login {
+  min-height: 50px;
+  margin-bottom: 80px;
+  font-weight: bold;
 }
 
-.emoticon__advise{
-	font-size: 35px;
+.emoticon__advise {
+  font-size: 35px;
 }
 
-#register_form{
+#register_form {
   display: none;
 }
 
-.body_bg{
+.body_bg {
   background-color: #0054f6;
+}
+
+h6 {
+  color: white;
 }

@@ -35,6 +35,9 @@
           <img src="<?= BASE_URL ?>assets/images/Alfonso y Erick Logotipos.gif" alt="logo">
         </div>
       </div>
+      <div class="d-flex flex-row justify-content-center align-items-center w-100">
+        <h6>REFACTORICED BY JORDI ARNAU & MIGUEL PEREZ</h6>
+      </div>
       <div class="d-flex flex-row gap-2 justify-content-center align-item-between h-100 w-100">
         <form action="<?= BASE_URL ?>login/login" method="POST" class="d-flex flex-column gap-3 p-2">
           <div class="w-100 d-flex justify-content-center pt-2  h-100">
