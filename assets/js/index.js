@@ -208,7 +208,7 @@ function loadUsersList() {
       sorting: true,
       paging: true,
       autoload: true,
-      pageSize: 15,
+      pageSize: 12,
       pageButtonCount: 3,
       deleteConfirm: "Do you confirm you want to delete user?",
 
