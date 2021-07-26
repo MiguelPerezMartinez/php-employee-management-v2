@@ -5,7 +5,7 @@ mysql -u root -p
 Or if you have your own user replace "root" for your user name.
 */
 
-DROP DATABASE IF EXISTS employees;
+DROP DATABASE IF EXISTS employees2;
 CREATE DATABASE employees2;
 USE employees2;
 

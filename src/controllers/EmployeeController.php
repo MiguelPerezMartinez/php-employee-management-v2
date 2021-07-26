@@ -36,8 +36,7 @@ class EmployeeController extends Controller
       $this->view->employee = $employee;
       $this->view->render($view);
     } else {
-      $view = "error/error";
-      $this->view->render($view);
+      header("Location: " . BASE_URL . "error/notfound");
     }
   }
 
@@ -55,9 +54,7 @@ class EmployeeController extends Controller
     if ($update) {
       header("Location: " . BASE_URL . "employee/dashboard");
     } else {
-      echo "ERROR</br>";
-      $view = "error/error";
-      $this->view->render($view);
+      header("Location: " . BASE_URL . "error/updateError");
     }
   }
 
@@ -68,14 +65,16 @@ class EmployeeController extends Controller
     if ($created) {
       header("Location: " . BASE_URL . "employee/dashboard");
     } else {
-      echo "ERROR</br>";
-      $view = "error/error";
-      $this->view->render($view);
+      header("Location: " . BASE_URL . "error/submitError");
     }
   }
 
   public function deleteEmployee($id) {
     $this->model = new EmployeeModel;
-    $this->model->remove($id);
+    $removed = $this->model->remove($id);
+
+    if ($removed == false) {
+      header("Location: " . BASE_URL . "error/deleteError");
+    }
   }
 }
